@@ -1,0 +1,11 @@
+Model Information:
+* title:	Hintze Hall, NHM London [surface model]
+* source:	https://sketchfab.com/3d-models/hintze-hall-nhm-london-surface-model-b2f3e84112d04bf1844e7ac2c4423566
+* author:	Thomas Flynn (https://sketchfab.com/nebulousflynn)
+
+Model License:
+* license type:	CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
+* requirements:	Author must be credited. No commercial use.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Hintze Hall, NHM London [surface model]" (https://sketchfab.com/3d-models/hintze-hall-nhm-london-surface-model-b2f3e84112d04bf1844e7ac2c4423566) by Thomas Flynn (https://sketchfab.com/nebulousflynn) licensed under CC-BY-NC-4.0 (http://creativecommons.org/licenses/by-nc/4.0/)
