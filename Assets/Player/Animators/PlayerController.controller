@@ -198,9 +198,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Idle
     m_EventTreshold: 0
-  - m_ConditionMode: 2
-    m_ConditionEvent: AttackBool
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2178317684548042095}
   m_Solo: 0
@@ -318,7 +315,7 @@ AnimatorStateMachine:
     m_Position: {x: -240, y: 390, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -9079085933794031023}
-    m_Position: {x: -150, y: 220, z: 0}
+    m_Position: {x: -230, y: 210, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7677277495057887658}
     m_Position: {x: 330.00598, y: 530.47046, z: 0}
@@ -423,6 +420,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 2
     m_ConditionEvent: Running
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Walk
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2178317684548042095}

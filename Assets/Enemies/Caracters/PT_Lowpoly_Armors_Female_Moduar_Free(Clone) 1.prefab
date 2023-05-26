@@ -2889,8 +2889,7 @@ MonoBehaviour:
   destination: {x: 0, y: 0, z: 0}
   destinationReached: 0
   enemyAnimator: {fileID: 7557793929860545744}
-  health: 100
-  attackDamage: 20
+  health: 3
 --- !u!1 &7557793929877201403
 GameObject:
   m_ObjectHideFlags: 0

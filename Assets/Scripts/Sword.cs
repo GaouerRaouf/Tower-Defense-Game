@@ -9,6 +9,7 @@ public class Sword : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         EnemyMovement enemy = other.GetComponent<EnemyMovement>();
+        
         if (enemy != null)
         {
             enemy.TakeSwordHit(swordDamage);

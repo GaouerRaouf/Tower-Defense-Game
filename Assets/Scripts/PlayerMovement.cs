@@ -70,6 +70,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             PlayerAnimator.SetBool("Walk", false);
+            PlayerAnimator.SetBool("Running", false);
         }
 
     }
@@ -95,16 +96,10 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(Attacking());
         }
-        else
-        {
-            PlayerAnimator.ResetTrigger("Attack");
-            PlayerAnimator.SetBool("AttackBool", false);
-        }
-
     }
     void Sprint()
     {
-        if (Input.GetButton("Sprint") && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.UpArrow)) && onSurface)
+        if (Input.GetButton("Sprint") && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow)) && onSurface)
         {
             float horizontalAxis = Input.GetAxisRaw("Horizontal");
             float verticalAxis = Input.GetAxisRaw("Vertical");
@@ -136,7 +131,8 @@ public class PlayerMovement : MonoBehaviour
     {
         PlayerAnimator.SetTrigger("Attack");
         PlayerAnimator.SetBool("AttackBool", true);
-        yield return new WaitForSeconds(2);
-        PlayerAnimator.SetBool("Running", false);
+        yield return new WaitForSeconds(1f);
+        PlayerAnimator.ResetTrigger("Attack");
+        PlayerAnimator.SetBool("AttackBool", false);
     }
 }

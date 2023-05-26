@@ -3735,8 +3735,7 @@ MonoBehaviour:
   destination: {x: 0, y: 0, z: 0}
   destinationReached: 0
   enemyAnimator: {fileID: 259397004200451538}
-  health: 100
-  attackDamage: 20
+  health: 4
 --- !u!136 &7909098973155468885
 CapsuleCollider:
   m_ObjectHideFlags: 0

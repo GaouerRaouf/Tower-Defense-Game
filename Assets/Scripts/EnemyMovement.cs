@@ -18,6 +18,7 @@ public class EnemyMovement : MonoBehaviour
     private Animator playerAnimator;
     private float deathTime = 3f;
 
+
     private void Start()
     {
         playerAnimator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
@@ -58,16 +59,16 @@ public class EnemyMovement : MonoBehaviour
     }
 
     public int health = 100;
-    public int attackDamage = 20;
+    
 
     public void TakeSwordHit(int swordDamage)
     {
         if (playerAnimator.GetBool("AttackBool"))
         {
-            health -= swordDamage;
+            health -= 1;
             if (health <= 0)
             {
-                Die();
+                StartCoroutine(Die());
             }
             else
             {
