@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -25,6 +26,11 @@ public class PlayerMovement : MonoBehaviour
     float jumpRange = 2;
 
 
+    private void Start()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
     private void Update()
     {
         onSurface = Physics.CheckSphere(surfaceCheck.position, surfaceDistance, surfaceMask);
@@ -64,7 +70,6 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             PlayerAnimator.SetBool("Walk", false);
-            PlayerAnimator.SetBool("Running", false);
         }
 
     }
@@ -88,14 +93,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetButtonDown("Attack"))
         {
-         //   PlayerAnimator.SetBool("Idle", false);
-            PlayerAnimator.SetTrigger("Attack");
-            
+            StartCoroutine(Attacking());
         }
         else
         {
-          //  PlayerAnimator.SetBool("Idle", true);
             PlayerAnimator.ResetTrigger("Attack");
+            PlayerAnimator.SetBool("AttackBool", false);
         }
 
     }
@@ -128,5 +131,12 @@ public class PlayerMovement : MonoBehaviour
                 PlayerAnimator.SetBool("Running", false);
             }
         }
+    }
+    IEnumerator Attacking()
+    {
+        PlayerAnimator.SetTrigger("Attack");
+        PlayerAnimator.SetBool("AttackBool", true);
+        yield return new WaitForSeconds(2);
+        PlayerAnimator.SetBool("Running", false);
     }
 }

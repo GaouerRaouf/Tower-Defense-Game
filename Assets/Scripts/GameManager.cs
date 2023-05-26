@@ -1,15 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class GameManager : MonoBehaviour
 {
 
-    
+    public static GameManager Instance;
 
     [Header("Spawn management")]
     [SerializeField] GameObject[] enemiesToSpawn;
     [SerializeField] float spawnRate;
+
+
+    [Header("UI")]
+    [SerializeField] TextMeshProUGUI WaveText;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -27,10 +39,8 @@ public class GameManager : MonoBehaviour
     {
         while (true)
         {
-            Debug.Log("idk");
-            int randomEnemy = Random.Range(0, 5);
-          //  Vector3 position = enemiesToSpawn[randomEnemy].GetComponent<WaypointNavigator>().currentWaypoint.GetPosition();
-            Instantiate(enemiesToSpawn[randomEnemy], new Vector3(-40f, 4.13f, -0.48f), transform.rotation);
+            int randomEnemy = Random.Range(0, 6);
+            Instantiate(enemiesToSpawn[randomEnemy]);
             yield return new WaitForSeconds(spawnRate);
         }
     }

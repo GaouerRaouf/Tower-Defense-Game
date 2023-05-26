@@ -14,11 +14,17 @@ public class EnemyMovement : MonoBehaviour
     public bool destinationReached;
 
     [Header("Animators")]
-   // [SerializeField] Animator playerAnimator;
     [SerializeField] Animator enemyAnimator;
-    
-    private void Update()
+    private Animator playerAnimator;
+    private float deathTime = 3f;
+
+    private void Start()
     {
+        playerAnimator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+        enemyAnimator.SetFloat("Speed", movingSpeed);
+    }
+    private void Update()
+    {       
         Walk();
     }
 
@@ -28,7 +34,7 @@ public class EnemyMovement : MonoBehaviour
         {
             Vector3 destinationDirection = destination - transform.position;
             float destinationDistance = destinationDirection.magnitude;
-
+            enemyAnimator.SetFloat("Speed", movingSpeed);
 
             if (destinationDistance >= stopSpeed)
             {
@@ -51,12 +57,38 @@ public class EnemyMovement : MonoBehaviour
         destinationReached = false;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public int health = 100;
+    public int attackDamage = 20;
+
+    public void TakeSwordHit(int swordDamage)
     {
-      if (collision.gameObject.CompareTag("Sword"))
-      {
-            Debug.Log("idk");
-      }
+        if (playerAnimator.GetBool("AttackBool"))
+        {
+            health -= swordDamage;
+            if (health <= 0)
+            {
+                Die();
+            }
+            else
+            {
+                TakeAttacks();
+            }
+        }
     }
+
+    private void TakeAttacks()
+    {
+        enemyAnimator.SetTrigger("Hit");
+        Debug.Log("Enemy attacks!");
+        
+    }
+
+    IEnumerator Die()
+    {
+        enemyAnimator.SetBool("Dead", true);
+        yield return new WaitForSeconds(deathTime);
+        Destroy(gameObject); 
+    }
+
 
 }

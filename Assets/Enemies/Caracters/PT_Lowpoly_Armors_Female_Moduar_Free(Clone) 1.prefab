@@ -2774,6 +2774,7 @@ GameObject:
   - component: {fileID: 7557793929860545744}
   - component: {fileID: -6675923014183987778}
   - component: {fileID: 4298384928556892196}
+  - component: {fileID: 6993479139845353774}
   - component: {fileID: 4131684530637658724}
   m_Layer: 0
   m_Name: PT_Lowpoly_Armors_Female_Moduar_Free(Clone) 1
@@ -2848,12 +2849,28 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7557793929860545747}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.22015378
   m_Height: 1.7730306
   m_Direction: 1
   m_Center: {x: -0.0050631464, y: 0.8992141, z: 0}
+--- !u!54 &6993479139845353774
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7557793929860545747}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &4131684530637658724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2866,12 +2883,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b224b3412b01414b83a7ac21c9f537b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movingSpeed: 2
+  movingSpeed: 4
   turningSpeed: 300
   stopSpeed: 1
   destination: {x: 0, y: 0, z: 0}
   destinationReached: 0
   enemyAnimator: {fileID: 7557793929860545744}
+  health: 100
+  attackDamage: 20
 --- !u!1 &7557793929877201403
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WaypointNavigator : MonoBehaviour
 {
+
+    GameManager gameManager;
     [Header("AI Character")]
     EnemyMovement character;
     [SerializeField] Waypoint currentWaypoint;
@@ -13,13 +15,15 @@ public class WaypointNavigator : MonoBehaviour
     private void Awake()
     {
         character = GetComponent<EnemyMovement>();
+        gameManager = GameManager.Instance;
         initialWaypoints = GameObject.FindGameObjectsWithTag("FirstWaypoint");
-        Debug.Log(initialWaypoints[0]);
+        currentWaypoint = GetInitialWaypoint();
+        transform.position = GetInitialPosition();
+
     }
 
     private void Start()
-    {
-        currentWaypoint = GetInitialWaypoint();
+    {       
         character.LocateDestination(currentWaypoint.GetPosition());
     }
 
@@ -37,6 +41,9 @@ public class WaypointNavigator : MonoBehaviour
         int randomInitialWaypoint = Random.Range(0,2);
         return initialWaypoints[randomInitialWaypoint].GetComponent<Waypoint>();
     }
-
+    public Vector3 GetInitialPosition()
+    {
+        return currentWaypoint.GetPosition();
+    }
     
 }
