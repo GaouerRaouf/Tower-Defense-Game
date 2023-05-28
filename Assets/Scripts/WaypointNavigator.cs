@@ -10,7 +10,7 @@ public class WaypointNavigator : MonoBehaviour
     EnemyMovement character;
     [SerializeField] Waypoint currentWaypoint;
     public GameObject[] initialWaypoints;
-
+    private Animator animator;
 
     private void Awake()
     {
@@ -19,7 +19,7 @@ public class WaypointNavigator : MonoBehaviour
         initialWaypoints = GameObject.FindGameObjectsWithTag("FirstWaypoint");
         currentWaypoint = GetInitialWaypoint();
         transform.position = GetInitialPosition();
-
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -33,6 +33,10 @@ public class WaypointNavigator : MonoBehaviour
         {
             currentWaypoint = currentWaypoint.nextWaypoint;
             character.LocateDestination(currentWaypoint.GetPosition());
+        }
+        if (character.destinationReached && currentWaypoint == currentWaypoint.nextWaypoint)
+        {
+            animator.SetBool("Attack", true);
         }
     }
 

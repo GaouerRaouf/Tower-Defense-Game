@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+
+    GameManager gameManager;
+
     [Header("CharacterInfo")]
     public float movingSpeed;
     public float turningSpeed;
@@ -12,6 +15,7 @@ public class EnemyMovement : MonoBehaviour
     [Header("Destination Variables")]
     public Vector3 destination;
     public bool destinationReached;
+    bool isTriggered = false;
 
     [Header("Animators")]
     [SerializeField] Animator enemyAnimator;
@@ -21,6 +25,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Start()
     {
+        gameManager = GameManager.Instance;
         playerAnimator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         enemyAnimator.SetFloat("Speed", movingSpeed);
     }
@@ -90,6 +95,23 @@ public class EnemyMovement : MonoBehaviour
         yield return new WaitForSeconds(deathTime);
         Destroy(gameObject); 
     }
-
-
+    IEnumerator DieOnTrigger()
+    {
+        if (isTriggered)
+        {
+            yield return new WaitForSeconds(15);
+            gameManager.Penalty();
+            isTriggered = false;
+            Destroy(gameObject);
+        }
+        
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Dead"))
+        {
+            isTriggered = true; 
+            StartCoroutine(DieOnTrigger());
+        }
+    }
 }

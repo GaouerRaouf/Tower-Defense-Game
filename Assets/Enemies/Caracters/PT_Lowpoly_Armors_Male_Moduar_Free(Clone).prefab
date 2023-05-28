@@ -3782,7 +3782,7 @@ GameObject:
   - component: {fileID: -8469830094262252785}
   m_Layer: 0
   m_Name: PT_Lowpoly_Armors_Male_Moduar_Free(Clone)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3863,7 +3863,7 @@ MonoBehaviour:
   destination: {x: 0, y: 0, z: 0}
   destinationReached: 0
   enemyAnimator: {fileID: 5734558926570517999}
-  health: 3
+  health: 2
 --- !u!136 &-4159422612490509091
 CapsuleCollider:
   m_ObjectHideFlags: 0

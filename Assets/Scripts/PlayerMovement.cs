@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Player Animator and Gravity")]
     [SerializeField] CharacterController cc;
     [SerializeField] float gravity = -9.81f;
-    [SerializeField] Animator PlayerAnimator;
+    public Animator PlayerAnimator;
 
     [Header("Player Jumping and velocity")]
     [SerializeField] float turnCalmTime = 1f;
